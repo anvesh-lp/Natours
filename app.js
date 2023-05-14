@@ -2,8 +2,9 @@ const express = require("express")
 const app = express();
 const fs = require('fs');
 const {json} = require("express");
+const morgan = require("morgan");
 app.use(express.json());
-
+app.use(morgan('dev'))
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`));
 app.get(`/api/v1/tours`, (req, res) => {
     res.status(200).json({
@@ -50,6 +51,7 @@ app.get(`/api/v1/tours/:id`, (req, res) => {
     })
 });
 
+app.route('/api/v1/users').get(getAllUsers);
 
 const port = 3000
 app.listen(port, () => {
