@@ -51,7 +51,39 @@ app.get(`/api/v1/tours/:id`, (req, res) => {
     })
 });
 
+const getAllUsers = (req, res) => {
+    res.status(500).json({
+        status: "error",
+        message: "Not yet defined"
+    })
+}
+const getUser = (req, res) => {
+    res.status(500).json({
+        status: "error",
+        message: "Not yet defined"
+    })
+}
+const updateUser = (req, res) => {
+    res.status(500).json({
+        status: "error",
+        message: "Not yet defined"
+    })
+}
+const deleteUser = (req, res) => {
+    res.status(500).json({
+        status: "error",
+        message: "Not yet defined"
+    })
+}
+const createUser = (req, res) => {
+    res.status(500).json({
+        status: "error",
+        message: "Not yet defined"
+    })
+}
+
 app.route('/api/v1/users').get(getAllUsers);
+app.route('/api/v1/users/:id').get(getUser).patch(updateUser).delete(deleteUser).post(createUser);
 
 const port = 3000
 app.listen(port, () => {
