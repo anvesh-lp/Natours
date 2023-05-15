@@ -13,6 +13,17 @@ exports.checkId = (req, res, next, val) => {
     next();
 }
 
+exports.checkBody=(req,res,next)=>{
+    console.log("In tour post middleware")
+    if(!req.body.name || !req.body.difficulty){
+        return res.status(400).json({
+            status:"fail",
+            message:"cannot post the tour without data"
+        })
+    }
+    next();
+}
+
 exports.postTour = (req, res) => {
     console.log(req.body);
     const newId = tours[tours.length - 1].id + 1;
