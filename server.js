@@ -15,32 +15,7 @@ mongoose.connect(DB, {
   // console.log(con);
 });
 
-const tourSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  price: {
-    type: Number,
-    required: true
-  },
-  rating: {
-    type: Number,
-    required: true
-  }
-});
 
-const Tour = mongoose.model('Tour', tourSchema);
-const newTour = new Tour({
-  name: 'Tour 8',
-  price: 100,
-  rating: 4.5
-});
-
-newTour.save()
-  .then((savedTour) => console.log(savedTour))
-  .catch(err => console.log(err));
 app.listen(port, () => {
   console.log(`app running on port ${port}.....`);
 });
