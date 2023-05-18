@@ -8,10 +8,19 @@ const {
   checkId,
   checkBody,
   deleteTour,
-  updateTour
+  updateTour,
+  aliasTopTours,
+  getTourStats
+
 } = require('./../controllers/tourController');
 
+
 const tourRouter = express.Router();
+tourRouter
+  .route('/top-5-cheap')
+  .get(aliasTopTours, getTours);
+
+tourRouter.route('/tour-stats').get(getTourStats);
 tourRouter.param('id', checkId);
 tourRouter.route('/').get(getTours).post(checkBody, createTour);
 tourRouter.route(`/:id`).get(getTour).delete(deleteTour).patch(updateTour);

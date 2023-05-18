@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "ndb server.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,5 +23,8 @@
     "mongoose": "^5.13.17",
     "morgan": "^1.10.0",
     "prettier": "^2.8.8"
+  },
+  "devDependencies": {
+    "ndb": "^1.1.5"
   }
 }
