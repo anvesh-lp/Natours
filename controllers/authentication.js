@@ -1,4 +1,5 @@
 const User = require('./../models/userModel');
+const jwt = require('jsonwebtoken');
 
 exports.signUp = async (req, res) => {
   try {
@@ -8,8 +9,14 @@ exports.signUp = async (req, res) => {
       password: req.body.password,
       passwordConfirm: req.body.passwordConfirm
     });
+
+    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY, {
+      expiresIn: process.env.JWT_TIMEOUT
+    });
+
     res.status(200).json({
       status: 'success',
+      token,
       data: {
         user: newUser
       }
