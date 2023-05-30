@@ -1,6 +1,8 @@
 const fs = require('fs');
 const express = require('express');
 const { json } = require('express');
+const authController = require('./../controllers/authentication');
+
 const {
   createTour,
   getTour,
@@ -22,6 +24,6 @@ tourRouter
 
 tourRouter.route('/tour-stats').get(getTourStats);
 tourRouter.param('id', checkId);
-tourRouter.route('/').get(getTours).post(checkBody, createTour);
+tourRouter.route('/').get(authController.protect,getTours).post(checkBody, createTour);
 tourRouter.route(`/:id`).get(getTour).delete(deleteTour).patch(updateTour);
 module.exports = tourRouter;
